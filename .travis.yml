@@ -6,17 +6,26 @@ os:
 
 env:
   global:
-   - CONDA_PREFIX=$HOME/miniconda
-   - MINICONDA_URL_BASE="https://repo.continuum.io/miniconda"
-  matrix:
+    - CONDA_PREFIX=$HOME/miniconda
+    - MINICONDA_URL_BASE="https://repo.continuum.io/miniconda"
     - TRAVIS_PYTHON_VERSION="2.7"
-    - TRAVIS_PYTHON_VERSION="3.*"
 
 sudo: false
 
 install:
-  - echo "Build on $TRAVIS_OS_NAME"
-  - source ci/travis/install_python.sh
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      OS="MacOSX-x86_64"
+    else
+      OS="Linux-x86_64"
+    fi
+  - curl $MINICONDA_URL_BASE/Miniconda2-latest-$os.sh > $CONDA_PREFIX.sh
+  - bash $CONDA_PREFIX.sh -b -p $CONDA_PREFIX
+  - export PATH="$CONDA_PREFIX/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda install python=$TRAVIS_PYTHON_VERSION
+  - conda install -q conda-build anaconda-client
   - conda info -a
 
 script:
