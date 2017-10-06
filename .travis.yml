@@ -1,0 +1,23 @@
+language: generic
+
+os:
+  - linux
+  - osx
+
+env:
+  global:
+   - CONDA_PREFIX=$HOME/miniconda
+   - MINICONDA_URL_BASE="https://repo.continuum.io/miniconda"
+  matrix:
+    - TRAVIS_PYTHON_VERSION="2.7"
+    - TRAVIS_PYTHON_VERSION="3.*"
+
+sudo: false
+
+install:
+  - echo "Build on $TRAVIS_OS_NAME"
+  - source ci/travis/install_python.sh
+  - conda info -a
+
+script:
+  - conda build ./recipe -c csdms-stack -c conda-forge --old-build-string
