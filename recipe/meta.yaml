@@ -10,13 +10,14 @@ source:
 
 requirements:
   build:
-    - python
+    - cython
     - anuga
-    - basic-modeling-interface
-    - pyyaml
+    - scipy
   run:
-    - python
     - anuga
+    - pyyaml
+    - basic-modeling-interface
+    - scipy
 
 build:
   number: 0
