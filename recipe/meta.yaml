@@ -12,12 +12,12 @@ requirements:
   build:
     - cython
     - anuga
-    - scipy
+    - scipy <=0.18.1
   run:
     - anuga
     - pyyaml
     - basic-modeling-interface
-    - scipy
+    - scipy <=0.18.1
 
 build:
   number: 0
