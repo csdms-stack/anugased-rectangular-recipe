@@ -29,4 +29,4 @@ install:
   - conda info -a
 
 script:
-  - conda build ./recipe -c csdms-stack -c conda-forge --old-build-string
+  - conda build ./recipe -c csdms-stack --old-build-string
