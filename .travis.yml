@@ -19,7 +19,7 @@ install:
     else
       OS="Linux-x86_64"
     fi
-  - curl $MINICONDA_URL_BASE/Miniconda2-latest-$os.sh > $CONDA_PREFIX.sh
+  - curl $MINICONDA_URL_BASE/Miniconda2-latest-$OS.sh > $CONDA_PREFIX.sh
   - bash $CONDA_PREFIX.sh -b -p $CONDA_PREFIX
   - export PATH="$CONDA_PREFIX/bin:$PATH"
   - hash -r
