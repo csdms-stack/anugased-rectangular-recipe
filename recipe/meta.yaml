@@ -24,8 +24,6 @@ build:
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 test:
-  imports:
-    - anuga_bmi
 
 about:
   home: https://csdms.colorado.edu/wiki/Model:Anuga
