@@ -1,0 +1,37 @@
+{% set name = "anugased-rectangular" %}
+{% set version = "0.1" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/csdms-contrib/anuga_BMI
+
+requirements:
+  build:
+    - cython
+    - anuga
+    - scipy <=0.18.1
+  run:
+    - anuga
+    - pyyaml
+    - basic-modeling-interface
+    - scipy <=0.18.1
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+test:
+
+about:
+  home: https://csdms.colorado.edu/wiki/Model:Anuga
+  license: GPLv2
+  summary:
+    AnugaSedRectangular allows for limited use of ANUGA, a
+    hydrodynamic model for simulating depth-averaged flows over 2D
+    surfaces, and the sediment transport and vegetation drag modules
+    of anugaSed. Use this component for simulations on rectangular
+    domains.
+  dev_url: https://github.com/GeoscienceAustralia/anuga_core
