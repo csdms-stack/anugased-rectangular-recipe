@@ -8,20 +8,20 @@ package:
 source:
   git_url: https://github.com/csdms-contrib/anuga_BMI
 
+build:
+  number: 1
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
 requirements:
   build:
     - cython
     - anuga
-    - scipy <=0.18.1
+    - scipy
   run:
     - anuga
     - pyyaml
     - basic-modeling-interface
-    - scipy <=0.18.1
-
-build:
-  number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+    - scipy
 
 test:
 
